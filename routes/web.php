@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +17,20 @@ Route::get('/lang/{locale}', function ($locale) {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+    $transactions = Transaction::where('user_id', auth()->id())->latest()->get();
+
+    $income = $transactions->where('type', 'income')->sum('amount');
+    $expense = $transactions->where('type', 'expense')->sum('amount');
+    $balance = $income - $expense;
+
+    return view('dashboard', compact(
+        'transactions',
+        'income',
+        'expense',
+        'balance'
+    ));
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
