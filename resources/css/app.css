@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.login-error{
+    background-color: #ffe5e5;
+    color: #cc0000;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}.login-bg {
+    background-image: url('/image/money.png');
+    background-size: cover;
+    background-position: center;
+}

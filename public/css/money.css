@@ -1,0 +1,239 @@
+:root {
+    --teal: #006f67;
+    --teal-dark: #005f58;
+    --text: #222222;
+    --muted: #737373;
+    --input-bg: #f4f2f3;
+    --border: #e1e1e1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BACKGROUND AUTH */
+.auth-page {
+    min-height: 100vh;
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.75),
+            rgba(255,255,255,0.75)
+        ),
+        url("/image/money.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 95px;
+}
+
+/* WRAPPER */
+.auth-wrap {
+    width: 425px;
+    position: relative;
+    padding-top: 48px;
+}
+
+/* LOGO */
+.auth-logo {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.auth-logo span {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    font-weight: bold;
+    color: #008494;
+    line-height: 1;
+}
+
+/* CARD */
+.auth-card {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* TABS */
+.auth-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 55px;
+    border-bottom: 1px solid var(--border);
+}
+
+.auth-tabs a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-tabs a.active {
+    color: var(--teal);
+    border-bottom: 3px solid var(--teal);
+}
+
+/* BODY */
+.auth-body {
+    padding: 31px 30px 29px;
+}
+
+.auth-body h1 {
+    margin: 0 0 27px;
+    font-size: 27px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.input {
+    width: 100%;
+    height: 43px;
+    border: none;
+    outline: none;
+    background: var(--input-bg);
+    padding: 0 15px;
+    color: #555;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.input::placeholder {
+    color: #b6b6b6;
+}
+
+.input:focus {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--teal);
+}
+
+.forgot-link {
+    color: #777;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.btn-auth {
+    width: 100%;
+    height: 48px;
+    border: none;
+    background: var(--teal);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 2px;
+    box-shadow: 0 3px 8px rgba(0, 111, 103, 0.25);
+}
+
+.btn-auth:hover {
+    background: var(--teal-dark);
+}
+
+.auth-bottom {
+    text-align: center;
+    margin-top: 21px;
+    font-size: 14px;
+    color: #555;
+}
+
+.auth-bottom a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.error-text {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #e63946;
+}
+
+.money-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #e63946;
+    color: white;
+    padding: 13px 16px;
+    border-radius: 8px;
+    z-index: 9999;
+    font-size: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 600px) {
+    .auth-page {
+        padding: 60px 20px;
+        align-items: flex-start;
+    }
+
+    .auth-wrap {
+        width: 100%;
+    }
+}
+
+.login-error{
+    background: #ffe5e5;
+    color: #d10000;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error-text{
+    color: red;
+    font-size: 13px;
+    margin-top: 6px;
+}
