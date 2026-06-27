@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     // TRANSACTION
     Route::get('/transaction/create', [TransactionController::class, 'create'])->name('transaction.create');
     Route::post('/transaction', [TransactionController::class, 'store'])->name('transaction.store');
+    Route::get('/export-pdf', [TransactionController::class, 'exportPdf'])->name('transaction.export');
 
 });
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TransactionController extends Controller
 {
@@ -54,5 +55,19 @@ class TransactionController extends Controller
         // REDIRECT
         return redirect()->route('dashboard')
             ->with('success', 'Transaction Successfully Added');
+    }
+
+    // EXPORT PDF
+    public function exportPdf()
+    {
+        $transactions = Transaction::where('user_id', auth()->id())->latest()->get();
+
+        $income = $transactions->where('type', 'income')->sum('amount');
+        $expense = $transactions->where('type', 'expense')->sum('amount');
+        $balance = $income - $expense;
+
+        $pdf = Pdf::loadView('transaction.pdf', compact('transactions', 'income', 'expense', 'balance'));
+        
+        return $pdf->download('rekapan-catatan.pdf');
     }
 }
